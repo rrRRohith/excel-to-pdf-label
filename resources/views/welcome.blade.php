@@ -906,22 +906,34 @@
     @endif
 </head>
 
-<body class="font-sans antialiased dark:bg-black dark:text-white/50">
-    <div class="bg-gray-50 text-black/50 dark:bg-black dark:text-white/50">
-        <img id="background" class="absolute -left-20 top-0 max-w-[877px]"
-            src="https://laravel.com/assets/img/welcome/background.svg" alt="Laravel background" />
-        <div
-            class="relative min-h-screen flex flex-col items-center justify-center selection:bg-[#FF2D20] selection:text-white">
-            <div class="relative w-full max-w-2xl px-6 lg:max-w-7xl">
-                <form action="" enctype="multipart/form-data" method="post">
-                    <input required type="file" name="file" id="">
-                    @csrf
-                    <button class="bg-white text-black">
-                        Upload
-                    </button>
-                </form>
+<body class="font-sans antialiased flex items-center h-dvh w-full bg-gray-50">
+    <div class="m-auto p-5 bg-white max-w-sm  w-full">
+        <form action="" enctype="multipart/form-data" method="post">
+
+            @csrf
+            <div class="">
+                <div>
+                    <label role="button" for="file"
+                        class="w-full flex items-center p-5 border-2 rounded border-dotted border-blue-600">
+                        <div class="m-auto text-center">
+                            <img class="m-auto mb-2" width="25" height="25"
+                                src="https://img.icons8.com/ios/50/upload--v1.png" alt="upload--v1" />
+                            Select an excel file
+                        </div>
+                    </label>
+                    @if ($errors->has('file'))
+                        <span class="text-red-500 text-sm">{{ $errors->first('file') }}</span>
+                    @endif
+                </div>
+                <input required type="file" name="file" id="file" class="w-1 h-1 opacity-0 m-auto">
             </div>
-        </div>
+            <div>
+                <button
+                    class="text-white bg-gradient-to-r w-full from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+                    Upload file
+                </button>
+            </div>
+        </form>
     </div>
 </body>
 
